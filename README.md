@@ -2,6 +2,8 @@
 
 A benchmark that measures how well different LLMs **generate and modify MQL5 Expert Advisors** (MetaTrader 5 trading bots) from a plain-language spec. Each model's code is **compiled and backtested on real market data**, then scored on both how it behaves and how well it is written.
 
+![Benchmark](images/leaderboard.png)
+
 > This is a write-up of a benchmark I designed and built. To protect the methodology, this repo describes the approach **conceptually only**. It contains no harness code, no scoring internals, no task dataset, and no prompts.
 
 ## Why I built it
@@ -49,8 +51,6 @@ So the rule I landed on: **compare to a fixed reference (good), never compare mo
 ## What it produces
 
 A **leaderboard** across all tasks, with every model scored on two axes (objective trade-reproduction and rubric code-quality) plus a combined, re-weightable final score. Every number is auditable back to its parts: compiled yes/no, trades vs reference, trade alignment, input parity for modifications, backtest health, and per-dimension quality scores.
-
-[images/leaderboard.png]
 
 Where the benchmark really discriminates is the **hardest tasks**. On easy or ambiguous specs, models converge near the reference and the small differences are usually valid interpretations of an ambiguous prompt, not bugs. On the complex tasks, they diverge sharply, and that is where the ranking becomes meaningful.
 
